@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#254dd6">
+  <title>수학 작도 교실 · 프로그램 선택</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#f2f5fa;color:#182b45;font-family:system-ui,"Malgun Gothic",sans-serif;line-height:1.6}
+    main{max-width:1040px;margin:auto;padding:clamp(24px,6vw,72px) 24px}.eyebrow{color:#254dd6;font-size:14px;font-weight:700;letter-spacing:.06em}
+    h1{font-size:clamp(28px,4.5vw,42px);line-height:1.25;letter-spacing:-.04em;margin:12px 0 16px}.intro{color:#52647a;max-width:600px;margin:0 0 36px}
+    .programs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.card{display:flex;flex-direction:column;min-width:0;background:white;border:1px solid #dae3ee;border-radius:22px;padding:28px;box-shadow:0 12px 28px #182b4507}
+    .card svg{width:100%;height:156px;display:block;margin:4px 0 20px;background:#f7f9fd;border-radius:14px}.badge{color:#52647a;font-size:13px;font-weight:600}h2{font-size:24px;margin:6px 0 10px;letter-spacing:-.03em}.description{color:#52647a;margin:0 0 18px;flex:1}.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}.tags span{border-radius:20px;background:#edf1f7;padding:4px 11px;font-size:12px}
+    .start{display:flex;align-items:center;justify-content:space-between;min-height:52px;background:#254dd6;color:white;border-radius:12px;padding:12px 18px;font-weight:700;text-decoration:none}.start:hover{background:#193cae}.start:focus-visible{outline:3px solid #e9a11b;outline-offset:4px}.second .start{background:#087b63}.second .start:hover{background:#06644f}
+    .note{font-size:14px;color:#52647a;margin:30px 0 0;padding:18px 20px;background:#e8eef8;border-radius:14px}.note strong{color:#182b45}
+    @media(max-width:640px){main{padding:28px 16px}.programs{grid-template-columns:1fr;gap:16px}.card{padding:22px}.card svg{height:132px}.intro{margin-bottom:24px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">중학교 1학년 수학</div>
+    <h1>수학 작도 교실</h1>
+    <p class="intro">점과 선, 컴퍼스로 직접 그리며 탐구해 보세요.<br>학습할 프로그램을 선택하면 작도판이 열립니다.</p>
+    <section class="programs" aria-label="작도 프로그램 선택">
+      <article class="card">
+        <span class="badge">프로그램 1 · 예제 2개 / 유제 2개</span>
+        <h2>선분과 각 작도</h2>
+        <svg viewBox="0 0 380 156" role="img" aria-label="길이가 같은 선분과 같은 크기의 각">
+          <g stroke="#b8c1cc" stroke-width="1.5"><path d="M24 111H355"/></g>
+          <g fill="none" stroke="#254dd6" stroke-width="4" stroke-linecap="round"><path d="M44 55H145M210 111H333M210 111L301 29"/></g>
+          <g fill="#254dd6"><circle cx="44" cy="55" r="5"/><circle cx="145" cy="55" r="5"/><circle cx="210" cy="111" r="5"/></g>
+          <path d="M248 111A38 38 0 0 0 238 85" fill="none" stroke="#e77a16" stroke-width="2.5"/>
+          <g fill="#52647a" font-family="sans-serif" font-size="15"><text x="39" y="81">A</text><text x="140" y="81">B</text></g>
+        </svg>
+        <p class="description">같은 길이의 선분, 두 배 길이의 선분, 같은 크기의 예각과 둔각을 작도합니다.</p>
+        <div class="tags"><span>선분의 길이 옮기기</span><span>각의 크기 옮기기</span></div>
+        <a class="start" href="./program1/index.html"><span>선분과 각 작도 시작</span><span aria-hidden="true">→</span></a>
+      </article>
+      <article class="card second">
+        <span class="badge">프로그램 2 · 예제 3개 / 유제 3개</span>
+        <h2>삼각형 작도</h2>
+        <svg viewBox="0 0 380 156" role="img" aria-label="주어진 조건으로 작도한 삼각형">
+          <path d="M24 124H355" fill="none" stroke="#b8c1cc" stroke-width="1.5"/>
+          <path d="M75 124L188 25L309 124Z" fill="#e6f4ef" stroke="#087b63" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M163 15A150 150 0 0 1 222 61M173 68A150 150 0 0 1 213 16" fill="none" stroke="#e77a16" stroke-width="2" stroke-dasharray="5 5"/>
+          <g fill="#087b63"><circle cx="75" cy="124" r="5"/><circle cx="188" cy="25" r="5"/><circle cx="309" cy="124" r="5"/></g>
+        </svg>
+        <p class="description">세 변, 두 변과 끼인각, 한 변과 양 끝 각을 이용해 예각삼각형과 둔각삼각형을 작도합니다.</p>
+        <div class="tags"><span>SSS</span><span>SAS</span><span>ASA</span></div>
+        <a class="start" href="./program2/index.html"><span>삼각형 작도 시작</span><span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+    <p class="note"><strong>태블릿과 PC에서 사용할 수 있습니다.</strong> 회색 직선 위에서 작도를 시작해 보세요. 예제는 자유롭게 선택할 수 있고, 길이와 각도가 같으면 정답 도형을 정확히 겹치지 않아도 다음 문제로 이동할 수 있습니다.</p>
+  </main>
+</body>
+</html>

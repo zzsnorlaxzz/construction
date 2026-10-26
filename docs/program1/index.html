@@ -246,7 +246,6 @@ button.primary{background:#254dd6;color:white;border-color:#254dd6}button:disabl
 .lesson-layout{display:grid;grid-template-columns:minmax(300px,.42fr) minmax(0,1fr);gap:10px;height:clamp(480px,calc(100dvh - 245px),800px);min-height:0;flex:none;min-width:0;width:100%;}
 .condition-column{gap:0;min-width:0}.conditions-panel{min-height:0;height:100%;max-height:none}.drawing-panel{min-height:0;height:100%}.panel-heading{padding:10px;font-size:14px}#canvas-container{min-height:0}#condition-cards{min-height:0}.panel-note{font-size:11px}
 .answer-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:#fff8f0;border-color:#f0d6b7}.answer-bar[hidden]{display:none}.answer-bar label{font-size:13px}.answer-bar input{width:72px;padding:7px;border:1px solid #cbb99f;border-radius:6px}.answer-bar input[type=range]{width:160px}#match-status{flex-basis:100%;font-size:13px;margin:3px 0;color:#7c4b16}
-.help-box{font-size:13px;line-height:1.8}.help-box summary{cursor:pointer;font-weight:600}#lesson-hint{margin:8px 0}.hint-note{color:#617188;font-size:12px}
 body{padding:8px;gap:8px;min-width:0}.lesson-top,.mission-bar,.answer-bar,.help-box{padding:10px 12px}.lesson-top h1{font-size:21px;margin-bottom:4px}.steps{margin-top:6px}.toolbar-container{width:100%;min-width:0}.toolbar{flex-wrap:wrap;padding:5px;gap:4px}.tool-btn{min-height:44px;height:44px;padding:0 8px}.tool-btn svg{flex:none}button.action{min-height:44px}.step{min-height:36px}.mission-bar{gap:8px}.mission-bar strong{min-width:180px}#status-bar{font-size:12px;min-height:36px}.answer-bar input{min-height:38px}
 @media(max-width:900px),(orientation:portrait){
  .lesson-layout{grid-template-columns:1fr;grid-template-rows:var(--conditions-height,240px) minmax(420px,1fr);height:auto;min-height:0}
@@ -256,6 +255,25 @@ body{padding:8px;gap:8px;min-width:0}.lesson-top,.mission-bar,.answer-bar,.help-
 }
 @media(max-width:1200px){.lesson-top p{display:none}}
 @media(max-width:639px){.lesson-layout{--conditions-height:470px!important}.mission-bar strong{flex-basis:100%}.tool-btn span{font-size:11px}.answer-bar input[type=range]{width:110px}}
+/* Fit the complete activity, including answer controls, to the available viewport. */
+html,body{height:100dvh;min-height:0;overflow:hidden;overscroll-behavior:none}
+body{display:flex;flex-direction:column;padding:6px;gap:6px}
+.lesson-top,.mission-bar,.answer-bar,.toolbar-container{flex:none;min-width:0}
+.lesson-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:7px 12px}
+.lesson-top h1{font-size:19px;margin:0;white-space:nowrap}.lesson-top p{display:none}.steps{margin:0;gap:5px}.step{min-height:32px;padding:4px 10px}
+.mission-bar{padding:6px 10px;gap:6px}.mission-bar strong{font-size:14px;min-width:150px}
+button.action{min-height:40px;padding:7px 10px;font-size:12px}.toolbar{padding:3px 5px;gap:3px}.tool-btn{min-height:44px;height:44px;padding:3px 7px;flex-direction:row;gap:4px}.toolbar .divider{display:none}
+.lesson-layout{flex:1 1 0;min-height:0;height:auto;grid-template-columns:minmax(290px,.42fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:6px;overflow:hidden}
+.condition-column,.conditions-panel,.drawing-panel{height:100%;min-height:0;max-height:none}.panel-heading{padding:7px 10px;font-size:13px;line-height:18px;min-height:34px}.panel-note{font-size:10px}#condition-cards,#canvas-container{min-height:0}
+#status-bar{min-height:30px;padding:5px 10px;font-size:11px;line-height:15px;max-height:40px;overflow:hidden}
+.answer-bar{padding:6px 10px;gap:5px}.answer-bar>b{font-size:13px}.answer-bar>span{display:none}.answer-bar input{min-height:32px;padding:4px;width:58px}.answer-bar input[type=range]{width:110px}.answer-bar label{font-size:12px}#match-status{font-size:12px;line-height:16px;margin:0}
+@media(max-width:900px),(orientation:portrait){
+ .lesson-top{flex-wrap:wrap;gap:5px}.lesson-top h1{font-size:18px}.steps{gap:4px}.step{font-size:11px;padding:4px 9px}
+ .tool-btn{flex-direction:column;height:48px;min-height:44px;padding:3px 6px;gap:1px}.tool-btn span{font-size:11px}.toolbar{justify-content:space-between}
+ .lesson-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,var(--conditions-height,220px)) minmax(0,1fr)}
+ .condition-column,.conditions-panel,.drawing-panel{height:100%;min-height:0}.mission-bar strong{flex-basis:auto}
+}
+@media(max-width:639px){.lesson-layout{--conditions-height:200px!important}.panel-note{display:none}.lesson-top h1{font-size:16px}.tool-btn{padding:2px 4px}.tool-btn span{font-size:10px}.mission-bar strong{flex-basis:100%}.answer-bar input[type=range]{width:75px}}
 
 </style>
 </head>
@@ -365,7 +383,6 @@ body{padding:8px;gap:8px;min-width:0}.lesson-top,.mission-bar,.answer-bar,.help-
     <canvas id="geometryCanvas" aria-label="주어진 조건과 작도 공간에 함께 사용하는 작도판"></canvas>
   </main>
 
-<details class="help-box"><summary>도구 사용법과 작도 힌트</summary><p>선분/직선: 시작점에서 끝점까지 드래그합니다. 컴퍼스: 중심과 반지름 끝점을 차례로 누른 뒤, 옮길 중심을 누르고 원 위에서 드래그하여 호를 그립니다. 폭은 유지되며, 바꾸려면 ‘새 반지름’을 누릅니다. 교점 가까이에서는 자동으로 정확한 교점에 맞춰집니다.</p><p id="lesson-hint"></p><p class="hint-note">선분·직선 또는 각 도구로 도형을 완성하세요. 각은 ① 변 위 점 → ② 꼭짓점 → ③ 다른 변 위 점 순서로 지정합니다. ‘각 · 점 3개’ 도구는 두 번째 점을 꼭짓점으로 사용하고, 두 변을 선택한 점 너머 작도 공간 끝까지 길게 그립니다. 각 문제에서는 완성 도형이 자동 지정됩니다. 정답 도형은 기준 변이 수평인 상태로 나타납니다. 잘못 선택한 점은 ‘직전 점 취소’로 되돌리세요. 회색 직선은 시작을 돕는 보조선이며, 그 위에 선분을 덧그리면 더 진하고 굵게 표시됩니다. 정답 판정은 위치·방향·뒤집기와 관계없이 길이와 각도를 비교합니다. 길이는 3px 또는 1.5% 중 큰 값, 각도는 1° 이내의 조작 오차를 허용합니다. 정답 도형의 점을 22px 이내로 가까이 옮기면 작도한 점에 붙으며, 변이 수평·수직에서 4° 이내이면 자동 보정됩니다. 각의 두 변은 길이가 아닌 방향을 비교합니다. 작도한 점과 선·호의 교점 근처를 누르면 완성 도형의 점이 자동으로 맞춰집니다. 올가미는 작도 중에도 사용할 수 있습니다. 선택 테두리 안을 끌면 이동하고, 위쪽 원형 손잡이를 끌면 도형 중심을 기준으로 회전합니다. Shift를 누르면 15°씩 회전합니다. 예제는 상단 버튼을 눌러 자유롭게 열 수 있고, 다른 예제로 이동해도 작도 내용은 유지됩니다. 새로고침하면 예제1부터 다시 시작합니다.</p></details>
   <script>
     const canvas = document.getElementById('geometryCanvas');
     const ctx = canvas.getContext('2d');
@@ -509,7 +526,7 @@ body{padding:8px;gap:8px;min-width:0}.lesson-top,.mission-bar,.answer-bar,.help-
       for (const label of conditionLabels) {
         ctx.fillStyle = label.heading ? '#334155' : '#2563eb';
         ctx.font = (label.heading ? '600 17px' : '17px') + ' sans-serif';
-        ctx.fillText(label.text,label.x,label.y);
+        ctx.textAlign=label.align||'left';ctx.fillText(label.text,label.x,label.y);
       }
       if (!conditionLabels.length) {
         const area=drawingRegions[0];
@@ -1783,17 +1800,18 @@ let lessonReady=false;
 layoutConditions = function(area){
  conditionGeometry=[];conditionLabels=[];starter=null;
  const q=qNow(), specs=q.kind==='triangle'?(q.rule==='SSS'?[['a',q.a],['b',q.b],['c',q.c]]:q.rule==='SAS'?[['a = BC',q.a],['c = AB',q.c],['∠B（끼인각）',q.B,true]]:[['a = BC',q.a],['∠B（B쪽 끝 각）',q.B,true],['∠C（C쪽 끝 각）',q.C,true]]):q.kind==='angle'?[['주어진 ∠A',q.angle,true]]:[['주어진 선분 AB',q.length]];
- let top=area.y+8;const wide=area.w>=640;
+ const wide=area.w>=560,heights=specs.map(s=>s[2]?(PROGRAM_MODE===1?190:132):78);
+ const total=heights.reduce((a,b)=>a+b,0),slots=[];
+ if(wide&&q.kind==='triangle'){
+  if(q.rule==='SAS'){slots.push({x:area.x,y:area.y+(area.h-148)/2,w:area.w/2,h:74},{x:area.x,y:area.y+(area.h-148)/2+74,w:area.w/2,h:74},{x:area.x+area.w/2,y:area.y+(area.h-148)/2,w:area.w/2,h:148});}
+  else if(q.rule==='ASA'){const top=area.y+(area.h-198)/2;slots.push({x:area.x,y:top,w:area.w,h:66},{x:area.x,y:top+66,w:area.w/2,h:132},{x:area.x+area.w/2,y:top+66,w:area.w/2,h:132});}
+  else {let top=area.y+(area.h-180)/2;for(let i=0;i<3;i++){slots.push({x:area.x,y:top,w:area.w,h:60});top+=60;}}
+ }else {let top=area.y+(area.h-total)/2;heights.forEach(h=>{slots.push({x:area.x,y:top,w:area.w,h});top+=h;});}
  specs.forEach(([name,value,isAngle],i)=>{
-  let left=area.x;
-  if(wide&&q.kind==='triangle'){
-   if(q.rule==='SSS'){left+=i%2*area.w/2;top=area.y+8+Math.floor(i/2)*90;}
-   else if(q.rule==='SAS'){left+=i===2?area.w/2:0;top=area.y+8+(i===1?95:0);}
-   else {left+=i===2?area.w/2:0;top=area.y+8+(i>0?95:0);}
-  }else if(wide)left+=(area.w-320)/2;
-  conditionLabels.push({text:name,x:left+18,y:top+24,heading:true});
-  if(!isAngle){const p1={x:left+18,y:top+65},p2={x:p1.x+value,y:p1.y};conditionGeometry.push({type:'segment',p1,p2,color:'#2563eb',lineWidth:3});if(q.kind!=='triangle'){conditionLabels.push({text:'A',x:p1.x-4,y:p1.y+25},{text:'B',x:p2.x-4,y:p2.y+25});}if(!wide)top+=100;}
-  else {const len=PROGRAM_MODE===1?145:105,theta=rad(value),minX=Math.min(0,len*Math.cos(theta));const v={x:left+18-minX,y:top+(PROGRAM_MODE===1?180:140)};const ends=[{x:v.x+len,y:v.y},{x:v.x+len*Math.cos(theta),y:v.y-len*Math.sin(theta)}];ends.forEach(p2=>conditionGeometry.push({type:'segment',p1:v,p2,color:'#2563eb',lineWidth:3,hideEndPoint:true}));if(!wide)top+=170;}
+  const slot=slots[i],cx=slot.x+slot.w/2;
+  conditionLabels.push({text:name,x:cx,y:slot.y+19,heading:true,align:'center'});
+  if(!isAngle){const p1={x:cx-value/2,y:slot.y+slot.h*.6},p2={x:cx+value/2,y:p1.y};conditionGeometry.push({type:'segment',p1,p2,color:'#2563eb',lineWidth:3});if(q.kind!=='triangle')conditionLabels.push({text:'A',x:p1.x,y:p1.y+23,align:'center'},{text:'B',x:p2.x,y:p2.y+23,align:'center'});}
+  else {const len=PROGRAM_MODE===1?145:105,theta=rad(value),minX=Math.min(0,len*Math.cos(theta)),maxX=len,rise=len*Math.sin(theta),contentTop=slot.y+30,bottom=slot.y+slot.h-10;const v={x:cx-(minX+maxX)/2,y:(contentTop+bottom+rise)/2};const ends=[{x:v.x+len,y:v.y},{x:v.x+len*Math.cos(theta),y:v.y-len*Math.sin(theta)}];ends.forEach(p2=>conditionGeometry.push({type:'segment',p1:v,p2,color:'#2563eb',lineWidth:3,hideEndPoint:true}));}
  });
  const workspace=drawingRegions[1],baselineY=workspace.y+workspace.h*.67;
  baseline={type:'line',p1:{x:workspace.x+24,y:baselineY},p2:{x:workspace.x+workspace.w-24,y:baselineY},color:'#b8c1cc',lineWidth:1.4,isBaseline:true,hideStartPoint:true,hideEndPoint:true};conditionGeometry.unshift(baseline);
@@ -1935,8 +1953,7 @@ function startQuestion(){
  $('program-title').textContent=PROGRAM_MODE===1?'선분과 각 작도':'주어진 조건의 삼각형 작도';
  $('mission').textContent=`${qNow().id}. ${qNow().title}`;
  renderSteps();
- $('lesson-hint').textContent=`지도서 ${qNow().page} 참고 · ${qNow().hint}`;
- document.querySelector('.lesson-layout').style.setProperty('--conditions-height',qNow().kind==='triangle'?(qNow().rule==='ASA'?'310px':'240px'):(qNow().kind==='angle'?'240px':'150px'));
+ document.querySelector('.lesson-layout').style.setProperty('--conditions-height',qNow().kind==='triangle'?(qNow().rule==='ASA'?'240px':qNow().rule==='SAS'?'200px':'220px'):(qNow().kind==='angle'?'230px':'140px'));
  $('retry-question').textContent='이 문제 다시 하기';lessonReady=true;resizeCanvas();baseSetTool('segment');
 }
 $('choose-result').onclick=()=>{if(answer)return;baseSetTool('point');angleDrawingPoints=[];resultPicking=true;resultPoints=[];resultHover=null;updateStatus(qNow().kind==='angle'?'① 변 위 점 → ② 꼭짓점 → ③ 다른 변 위 점 순서로 누르세요. 두 번째 점이 꼭짓점입니다.':`작도한 ${needCount()}개 꼭짓점/끝점 근처를 누르세요. 초록색 원에 자동으로 맞춰집니다.`);render();};
